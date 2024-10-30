@@ -3,6 +3,8 @@ package hexlet.code;
 public class App {
 
     public static void main(String[] args) {
-        Cli.sayHello();
+        Game game = new Game();
+
+        game.start();
     }
 }
