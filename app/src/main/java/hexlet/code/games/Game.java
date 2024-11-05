@@ -1,7 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.MathGenerator;
+import hexlet.code.Utils;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -26,6 +26,8 @@ public class Game {
             case 2 -> even(userChoice);
             case 3 -> calc(userChoice);
             case 4 -> gcd(userChoice);
+            case 5 -> progression(userChoice);
+            case 6 -> prime(userChoice);
             default -> {
                 return;
             }
@@ -62,7 +64,7 @@ public class Game {
                 System.out.println("Correct!");
             }
 
-            if (!isCorrect || (!userAnswer.equals("yes") && !userAnswer.equals("no"))) {
+            if (!isCorrect) {
                 System.out.println(
                     "'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was " + correctAnswer + ".");
                 System.out.println("Let's try again, " + this.engine.userName + "!");
@@ -86,7 +88,7 @@ public class Game {
 
         while (counter != 3) {
 
-            HashMap<Integer, String> exampleMap = MathGenerator.generateExample();
+            HashMap<Integer, String> exampleMap = Utils.generateExample();
 
             for (Integer key : exampleMap.keySet()) {
 
@@ -124,7 +126,7 @@ public class Game {
 
         while (counter != 3) {
 
-            HashMap<Integer, String> exampleMap = MathGenerator.generateGCD();
+            HashMap<Integer, String> exampleMap = Utils.generateGCD();
 
             for (Integer key : exampleMap.keySet()) {
 
@@ -147,6 +149,88 @@ public class Game {
 
             counter++;
         }
+        System.out.println("Congratulations, " + this.engine.userName + "!");
+    }
+
+    private void progression(int userChoice) {
+        this.engine.showChoice(userChoice);
+        this.engine.checkUserName();
+
+        // Счетчик чтобы отслеживать итерации попыток.
+        int counter = 0;
+
+        System.out.println("What number is missing in the progression?");
+
+        while (counter != 3) {
+
+            HashMap<Integer, String> exampleMap = Utils.createProgression();
+
+            for (Integer key : exampleMap.keySet()) {
+
+                System.out.println("Question: " + exampleMap.get(key));
+                Scanner scanner = new Scanner(System.in);
+                int userAnswer = scanner.nextInt();
+                System.out.println("Your answer: " + userAnswer);
+
+                boolean isCorrect = userAnswer == key;
+
+                if (isCorrect) {
+                    System.out.println("Correct!");
+                } else {
+                    System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was " + key + ".");
+                    System.out.println("Let's try again, " + this.engine.userName + "!");
+
+                    return;
+                }
+            }
+
+            counter++;
+        }
+        System.out.println("Congratulations, " + this.engine.userName + "!");
+    }
+
+    private void prime(int userChoice) {
+        this.engine.showChoice(userChoice);
+        this.engine.checkUserName();
+
+        // Счетчик чтобы отслеживать итерации попыток.
+        int counter = 0;
+
+        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+
+        while (counter != 3) {
+
+            Random random = new Random();
+            int randomNumber = random.nextInt(100) + 1;
+            boolean isNatural = Utils.isPrime(randomNumber);
+
+            System.out.println("Question: " + randomNumber);
+
+            Scanner scanner = new Scanner(System.in);
+
+            String userAnswer = scanner.nextLine();
+
+            System.out.println("Your answer: " + userAnswer);
+
+            String correctAnswer = isNatural ? "'yes'" : "'no'";
+
+            boolean isCorrect = (userAnswer.equals("yes") && isNatural) || (userAnswer.equals("no") && !isNatural);
+
+            if (isCorrect) {
+                System.out.println("Correct!");
+            }
+
+            if (!isCorrect) {
+                System.out.println(
+                    "'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was " + correctAnswer + ".");
+                System.out.println("Let's try again, " + this.engine.userName + "!");
+
+                return;
+            }
+
+            counter++;
+        }
+        System.out.println("Congratulations, " + this.engine.userName + "!");
     }
 
 }

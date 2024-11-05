@@ -15,6 +15,8 @@ public class Engine {
         menu.put(2, "Even");
         menu.put(3, "Calc");
         menu.put(4, "GCD");
+        menu.put(5, "Progression");
+        menu.put(6, "Prime");
         menu.put(0, "Exit");
     }
 

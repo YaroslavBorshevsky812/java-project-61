@@ -1,9 +1,11 @@
 package hexlet.code;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
-public class MathGenerator {
+public class Utils {
 
     private static final Random RANDOM = new Random();
 
@@ -65,7 +67,7 @@ public class MathGenerator {
         return new int[] {num1, num2};
     }
 
-    public static HashMap<Integer, String> generateGCD () {
+    public static HashMap<Integer, String> generateGCD() {
         HashMap<Integer, String> resultMap = new HashMap<>();
         int[] numbers = generateRandomDifferentNumbers();
         int gcd = findGreatestCommonDivisor(numbers[0], numbers[1]);
@@ -85,5 +87,44 @@ public class MathGenerator {
             num1 = temp;
         }
         return num1;
+    }
+
+    public static HashMap<Integer, String> createProgression() {
+        HashMap<Integer, String> resultMap = new HashMap<>();
+        Random random = new Random();
+
+        int start = random.nextInt(100) + 1;
+        int end = random.nextInt(100) + start + 1;
+        int length = random.nextInt(6) + 5;
+
+        int step = (int) Math.round((double) (end - start) / (length - 1));
+
+        List<Object> progression = new ArrayList<>();
+        for (int i = 0; i < length; i++) {
+            progression.add(start + i * step);
+        }
+
+        int randomIndex = random.nextInt(progression.size());
+        int answer = (int) progression.get(randomIndex);
+        progression.set(randomIndex, "..");
+        String example = progression.toString().replace("[", "").replace("]", "");
+
+        resultMap.put(answer, example);
+
+        return resultMap;
+    }
+
+    public static boolean isPrime(int number) {
+        if (number < 2) {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
