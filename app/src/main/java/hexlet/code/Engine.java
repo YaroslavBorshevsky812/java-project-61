@@ -14,6 +14,7 @@ public class Engine {
         menu.put(1, "Greet");
         menu.put(2, "Even");
         menu.put(3, "Calc");
+        menu.put(4, "GCD");
         menu.put(0, "Exit");
     }
 
@@ -31,5 +32,10 @@ public class Engine {
         for (Map.Entry<Integer, String> entry : menu.entrySet()) {
             System.out.println(entry.getKey() + " - " + entry.getValue());
         }
+    }
+
+    public void showChoice(int userChoice) {
+        System.out.println("Your choice: " + userChoice);
+        System.out.println();
     }
 }

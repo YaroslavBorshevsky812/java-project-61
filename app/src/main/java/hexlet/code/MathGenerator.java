@@ -52,4 +52,38 @@ public class MathGenerator {
             default -> "+";
         };
     }
+
+    public static int[] generateRandomDifferentNumbers() {
+        int num1 = (int) (Math.random() * 100) + 1;
+
+        int num2;
+        do {
+            num2 = (int) (Math.random() * 100) + 1;
+        }
+        while (num2 == num1);
+
+        return new int[] {num1, num2};
+    }
+
+    public static HashMap<Integer, String> generateGCD () {
+        HashMap<Integer, String> resultMap = new HashMap<>();
+        int[] numbers = generateRandomDifferentNumbers();
+        int gcd = findGreatestCommonDivisor(numbers[0], numbers[1]);
+        String example = "";
+
+        example = numbers[0] + " " + numbers[1];
+
+        resultMap.put(gcd, example);
+
+        return resultMap;
+    }
+
+    public static int findGreatestCommonDivisor(int num1, int num2) {
+        while (num2 != 0) {
+            int temp = num2;
+            num2 = num1 % num2;
+            num1 = temp;
+        }
+        return num1;
+    }
 }

@@ -19,11 +19,13 @@ public class Game {
         this.engine.showMenu();
 
         Scanner scanner = new Scanner(System.in);
+        int userChoice = scanner.nextInt();
 
-        switch (scanner.nextInt()) {
+        switch (userChoice) {
             case 1 -> this.engine.checkUserName();
-            case 2 -> even();
-            case 3 -> calc();
+            case 2 -> even(userChoice);
+            case 3 -> calc(userChoice);
+            case 4 -> gcd(userChoice);
             default -> {
                 return;
             }
@@ -31,7 +33,7 @@ public class Game {
 
     }
 
-    private void even() {
+    private void even(int userChoice) {
         this.engine.checkUserName();
         // Счетчик чтобы отслеживать итерации попыток.
         int counter = 0;
@@ -75,7 +77,7 @@ public class Game {
 
     }
 
-    private void calc() {
+    private void calc(int userChoice) {
         this.engine.checkUserName();
         // Счетчик чтобы отслеживать итерации попыток.
         int counter = 0;
@@ -110,6 +112,41 @@ public class Game {
         }
 
         System.out.println("Congratulations, " + this.engine.userName + "!");
+    }
+
+    private void gcd(int userChoice) {
+        this.engine.checkUserName();
+
+        // Счетчик чтобы отслеживать итерации попыток.
+        int counter = 0;
+
+        System.out.println("Find the greatest common divisor of given numbers.");
+
+        while (counter != 3) {
+
+            HashMap<Integer, String> exampleMap = MathGenerator.generateGCD();
+
+            for (Integer key : exampleMap.keySet()) {
+
+                System.out.println("Question: " + exampleMap.get(key));
+                Scanner scanner = new Scanner(System.in);
+                int userAnswer = scanner.nextInt();
+                System.out.println("Your answer: " + userAnswer);
+
+                boolean isCorrect = userAnswer == key;
+
+                if (isCorrect) {
+                    System.out.println("Correct!");
+                } else {
+                    System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was " + key + ".");
+                    System.out.println("Let's try again, " + this.engine.userName + "!");
+
+                    return;
+                }
+            }
+
+            counter++;
+        }
     }
 
 }
