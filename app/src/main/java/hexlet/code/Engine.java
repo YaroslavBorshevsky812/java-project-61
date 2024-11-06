@@ -14,8 +14,12 @@ import java.util.Scanner;
 
 public class Engine {
 
-    public static String userName; // Поля не должны быть public
+    private static String userName; // Поля не должны быть public
     public static final int ITERATION_RANGE = 3; // Число итераций в игре;
+
+    public static String getUserName() {
+        return userName;
+    }
 
     public static void checkUserName() {
         System.out.println("Welcome to the Brain Games!");

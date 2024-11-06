@@ -28,6 +28,6 @@ public class Calc {
             counter++;
         }
 
-        System.out.println("Congratulations, " + Engine.userName + "!");
+        System.out.println("Congratulations, " + Engine.getUserName() + "!");
     }
 }

@@ -27,6 +27,6 @@ public class Prime {
 
             counter++;
         }
-        System.out.println("Congratulations, " + Engine.userName + "!");
+        System.out.println("Congratulations, " + Engine.getUserName() + "!");
     }
 }
