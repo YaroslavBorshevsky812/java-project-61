@@ -1,5 +1,12 @@
 package hexlet.code;
 
+import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
+import hexlet.code.games.GCD;
+import hexlet.code.games.Hello;
+import hexlet.code.games.Prime;
+import hexlet.code.games.Progression;
+
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -23,12 +30,12 @@ public class Engine {
 
         Map<Integer, String> menu = new LinkedHashMap<>();
 
-        menu.put(1, "Greet");
-        menu.put(2, "Even");
-        menu.put(3, "Calc");
-        menu.put(4, "GCD");
-        menu.put(5, "Progression");
-        menu.put(6, "Prime");
+        menu.put(Hello.GAME_ID, "Greet");
+        menu.put(Even.GAME_ID, "Even");
+        menu.put(Calc.GAME_ID, "Calc");
+        menu.put(GCD.GAME_ID, "GCD");
+        menu.put(Progression.GAME_ID, "Progression");
+        menu.put(Prime.GAME_ID, "Prime");
         menu.put(0, "Exit");
 
         System.out.println("Please enter the game number and press Enter.");
