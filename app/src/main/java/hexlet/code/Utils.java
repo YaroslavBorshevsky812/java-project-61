@@ -7,21 +7,26 @@ import java.util.Random;
 
 public class Utils {
 
-    private static final Random RANDOM = new Random();
+    public static final int MIN_RANDOM_RANGE = 1; // Минимальная граница диапазона рандомных чисел
+    public static final int MAX_RANDOM_RANGE = 100; // Максимальная граница диапазона рандомных чисел
+    public static final int MIN_PROGRESSION_RANGE = 5; // Минимальная граница диапазона рандомных чисел прогрессии
+    public static final int MAX_PROGRESSION_RANGE = 15; // Максимальная граница диапазона рандомных чисел прогрессии
 
     public static HashMap<Integer, String> generateExample() {
-        int num1, num2, result = 0;
+        int num1 = 0;
+        int num2 = 0;
+        int result = 0;
         String example;
         String operation = getOperation();
 
         HashMap<Integer, String> resultMap = new HashMap<>();
 
         if (operation.equals("-")) {
-            num1 = RANDOM.nextInt(100) + 1;
-            num2 = RANDOM.nextInt(num1) + 1;
+            num1 = generateRandomNumber(MAX_RANDOM_RANGE);
+            num2 = generateRandomNumber(num1);
         } else {
-            num1 = RANDOM.nextInt(100) + 1;
-            num2 = RANDOM.nextInt(100) + 1;
+            num1 = generateRandomNumber(MAX_RANDOM_RANGE);
+            num2 = generateRandomNumber(MAX_RANDOM_RANGE);
         }
 
         switch (operation) {
@@ -46,21 +51,22 @@ public class Utils {
     }
 
     private static String getOperation() {
-        int operationIndex = RANDOM.nextInt(3);
+        int operationIndex = generateRandomNumber(3);
+
         return switch (operationIndex) {
             case 0 -> "+";
             case 1 -> "-";
             case 2 -> "*";
-            default -> "+";
+            default -> " ";
         };
     }
 
     public static int[] generateRandomDifferentNumbers() {
-        int num1 = (int) (Math.random() * 100) + 1;
+        int num1 = generateRandomNumber(MAX_RANDOM_RANGE);
 
         int num2;
         do {
-            num2 = (int) (Math.random() * 100) + 1;
+            num2 = generateRandomNumber(MAX_RANDOM_RANGE);
         }
         while (num2 == num1);
 
@@ -91,11 +97,10 @@ public class Utils {
 
     public static HashMap<Integer, String> createProgression() {
         HashMap<Integer, String> resultMap = new HashMap<>();
-        Random random = new Random();
 
-        int start = random.nextInt(100) + 1;
-        int end = random.nextInt(100) + start + 1;
-        int length = random.nextInt(6) + 5;
+        int start = generateRandomNumber(MAX_RANDOM_RANGE);
+        int end = generateRandomNumber(MAX_RANDOM_RANGE);
+        int length = generateRandomNumber(MAX_PROGRESSION_RANGE, MIN_PROGRESSION_RANGE);
 
         int step = (int) Math.round((double) (end - start) / (length - 1));
 
@@ -104,7 +109,7 @@ public class Utils {
             progression.add(start + i * step);
         }
 
-        int randomIndex = random.nextInt(progression.size());
+        int randomIndex = generateRandomNumber(progression.size());
         int answer = (int) progression.get(randomIndex);
         progression.set(randomIndex, "..");
         String example = progression.toString().replace("[", "").replace("]", "");
@@ -126,5 +131,17 @@ public class Utils {
         }
 
         return true;
+    }
+
+    public static int generateRandomNumber(int maxRandomRange, int minRandomRange) {
+        Random random = new Random();
+
+        return random.nextInt(maxRandomRange) + minRandomRange;
+    }
+
+    public static int generateRandomNumber(int maxRandomRange) {
+        Random random = new Random();
+
+        return random.nextInt(maxRandomRange) + MIN_RANDOM_RANGE;
     }
 }
