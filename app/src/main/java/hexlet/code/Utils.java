@@ -111,7 +111,7 @@ public class Utils {
         int randomIndex = generateRandomNumber(progression.size());
         int answer = (int) progression.get(randomIndex);
         progression.set(randomIndex, "..");
-        String example = progression.toString().replace("[", "").replace("]", "");
+        String example = progression.toString().replace("[", "").replace("]", "").replace(",", "");
 
         resultMap.put(answer, example);
 
