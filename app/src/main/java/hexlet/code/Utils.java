@@ -109,7 +109,7 @@ public class Utils {
             progression.add(start + i * step);
         }
 
-        int randomIndex = generateRandomNumber(progression.size());
+        int randomIndex = generateRandomNumber(progression.size() - 1);
         int answer = (int) progression.get(randomIndex);
         progression.set(randomIndex, "..");
         String example = progression.toString()
