@@ -54,10 +54,9 @@ public class Utils {
         int operationIndex = generateRandomNumber(3);
 
         return switch (operationIndex) {
-            case 0 -> "+";
             case 1 -> "-";
             case 2 -> "*";
-            default -> " ";
+            default -> "+";
         };
     }
 
