@@ -43,7 +43,7 @@ public class Utils {
                 break;
         }
 
-        example = String.valueOf(num1) + " " + operation + " " + String.valueOf(num2);
+        example = (num1) + " " + operation + " " + (num2);
 
         resultMap.put(result, example);
 

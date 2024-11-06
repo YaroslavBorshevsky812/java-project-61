@@ -19,7 +19,10 @@ public class Progression {
 
         while (counter != Engine.ITERATION_RANGE) {
             HashMap<Integer, String> exampleMap = Utils.createProgression();
-            Engine.digitsLogic(exampleMap);
+
+            if (!Engine.digitsLogic(exampleMap)) {
+                return;
+            }
 
             counter++;
         }

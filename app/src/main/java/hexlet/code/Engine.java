@@ -43,7 +43,7 @@ public class Engine {
         System.out.println();
     }
 
-    public static void digitsLogic(HashMap<Integer, String> taskMap) {
+    public static boolean digitsLogic(HashMap<Integer, String> taskMap) {
         for (Integer key : taskMap.keySet()) {
 
             System.out.println("Question: " + taskMap.get(key));
@@ -59,9 +59,10 @@ public class Engine {
                 System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was " + key + ".");
                 System.out.println("Let's try again, " + Engine.userName + "!");
 
-                return;
+                return false;
             }
         }
+        return true;
     }
 
     public static boolean yesNoLogic(Integer question, boolean predicate) {

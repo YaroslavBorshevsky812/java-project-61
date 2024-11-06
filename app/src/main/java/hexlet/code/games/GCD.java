@@ -19,7 +19,10 @@ public class GCD {
 
         while (counter != Engine.ITERATION_RANGE) {
             HashMap<Integer, String> exampleMap = Utils.generateGCD();
-            Engine.digitsLogic(exampleMap);
+
+            if (!Engine.digitsLogic(exampleMap)) {
+                return;
+            }
 
             counter++;
         }
