@@ -43,7 +43,7 @@ public class Utils {
                 break;
         }
 
-        example = num1 + " " + operation + " " + num2 + " = ?";
+        example = num1 + " " + operation + " " + num2;
 
         resultMap.put(result, example);
 
