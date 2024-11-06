@@ -8,6 +8,7 @@ import java.util.HashMap;
 public class Calc {
 
     private static final String GAME_TITLE = "What is the result of the expression?";
+    public static final int GAME_ID = 3; // Идентификатор игры.
 
     public static void start(int userChoice) {
         Engine.showChoice(userChoice);

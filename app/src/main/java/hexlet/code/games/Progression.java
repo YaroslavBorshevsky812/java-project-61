@@ -8,6 +8,7 @@ import java.util.HashMap;
 public class Progression {
 
     private static final String GAME_TITLE = "What number is missing in the progression?";
+    public static final int GAME_ID = 5; // Идентификатор игры.
 
     public static void start(int userChoice) {
         Engine.showChoice(userChoice);

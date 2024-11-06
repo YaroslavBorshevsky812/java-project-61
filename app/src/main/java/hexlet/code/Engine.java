@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class Engine {
 
     public static String userName; // Поля не должны быть public
-
     public static final int ITERATION_RANGE = 3; // Число итераций в игре;
 
     public static void checkUserName() {

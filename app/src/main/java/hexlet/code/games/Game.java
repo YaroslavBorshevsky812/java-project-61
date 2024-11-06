@@ -14,12 +14,12 @@ public class Game {
         int userChoice = scanner.nextInt();
 
         switch (userChoice) {
-            case 1 -> Engine.checkUserName();
-            case 2 -> Even.start(userChoice);
-            case 3 -> Calc.start(userChoice);
-            case 4 -> GCD.start(userChoice);
-            case 5 -> Progression.start(userChoice);
-            case 6 -> Prime.start(userChoice);
+            case Hello.GAME_ID -> Hello.start();
+            case Even.GAME_ID -> Even.start(userChoice);
+            case Calc.GAME_ID -> Calc.start(userChoice);
+            case GCD.GAME_ID -> GCD.start(userChoice);
+            case Progression.GAME_ID -> Progression.start(userChoice);
+            case Prime.GAME_ID -> Prime.start(userChoice);
             default -> {
                 return;
             }

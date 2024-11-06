@@ -6,6 +6,7 @@ import hexlet.code.Utils;
 public class Even {
 
     private static final String GAME_TITLE = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    public static final int GAME_ID = 2; // Идентификатор игры.
 
     public static void start(int userChoice) {
 

@@ -11,6 +11,7 @@ public class Utils {
     public static final int MAX_RANDOM_RANGE = 100; // Максимальная граница диапазона рандомных чисел
     public static final int MIN_PROGRESSION_RANGE = 5; // Минимальная граница диапазона рандомных чисел прогрессии
     public static final int MAX_PROGRESSION_RANGE = 15; // Максимальная граница диапазона рандомных чисел прогрессии
+    public static final int OPERATIONS_NUMBER = 3; // Число операций для калькулятора.
 
     public static HashMap<Integer, String> generateExample() {
         int num1 = 0;
@@ -51,7 +52,7 @@ public class Utils {
     }
 
     private static String getOperation() {
-        int operationIndex = generateRandomNumber(3);
+        int operationIndex = generateRandomNumber(OPERATIONS_NUMBER);
 
         return switch (operationIndex) {
             case 1 -> "-";
@@ -111,7 +112,10 @@ public class Utils {
         int randomIndex = generateRandomNumber(progression.size());
         int answer = (int) progression.get(randomIndex);
         progression.set(randomIndex, "..");
-        String example = progression.toString().replace("[", "").replace("]", "").replace(",", "");
+        String example = progression.toString()
+                                    .replace("[", "")
+                                    .replace("]", "")
+                                    .replace(",", "");
 
         resultMap.put(answer, example);
 
