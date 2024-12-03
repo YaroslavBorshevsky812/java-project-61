@@ -19,7 +19,7 @@ public class Prime {
         while (counter != Engine.ITERATION_RANGE) {
 
             int randomNumber = Utils.generateRandomNumber(Utils.MAX_RANDOM_RANGE);
-            boolean isNatural = Utils.isPrime(randomNumber);
+            boolean isNatural = isPrime(randomNumber);
 
             if (!Engine.yesNoLogic(randomNumber, isNatural)) {
                 return;
@@ -28,5 +28,19 @@ public class Prime {
             counter++;
         }
         System.out.println("Congratulations, " + Engine.getUserName() + "!");
+    }
+
+    public static boolean isPrime(int number) {
+        if (number < 2) {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

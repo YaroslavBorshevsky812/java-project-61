@@ -5,6 +5,9 @@ import hexlet.code.Utils;
 
 import java.util.HashMap;
 
+import static hexlet.code.Utils.MAX_RANDOM_RANGE;
+import static hexlet.code.Utils.OPERATIONS_NUMBER;
+
 public class Calc {
 
     private static final String GAME_TITLE = "What is the result of the expression?";
@@ -19,7 +22,7 @@ public class Calc {
         int counter = 0;
 
         while (counter != Engine.ITERATION_RANGE) {
-            HashMap<Integer, String> exampleMap = Utils.generateExample();
+            HashMap<Integer, String> exampleMap = generateExample();
 
             if (!Engine.digitsLogic(exampleMap)) {
                 return;
@@ -29,5 +32,54 @@ public class Calc {
         }
 
         System.out.println("Congratulations, " + Engine.getUserName() + "!");
+    }
+
+    public static HashMap<Integer, String> generateExample() {
+        int num1 = 0;
+        int num2 = 0;
+        int result = 0;
+        String example;
+        String operation = getOperation();
+
+        HashMap<Integer, String> resultMap = new HashMap<>();
+
+        if (operation.equals("-")) {
+            num1 = Utils.generateRandomNumber(MAX_RANDOM_RANGE);
+            num2 = Utils.generateRandomNumber(num1);
+        } else {
+            num1 = Utils.generateRandomNumber(MAX_RANDOM_RANGE);
+            num2 = Utils.generateRandomNumber(MAX_RANDOM_RANGE);
+        }
+
+        switch (operation) {
+            case "+":
+                result = num1 + num2;
+                break;
+            case "-":
+                result = num1 - num2;
+                break;
+            case "*":
+                result = num1 * num2;
+                break;
+            default:
+                throw new Error("Unknown operation " + operation);
+        }
+
+        example = (num1) + " " + operation + " " + (num2);
+
+        resultMap.put(result, example);
+
+        return resultMap;
+    }
+
+    private static String getOperation() {
+        int operationIndex = Utils.generateRandomNumber(OPERATIONS_NUMBER);
+
+        return switch (operationIndex) {
+            case 1 -> "-";
+            case 2 -> "*";
+            case 3 -> "+";
+            default -> throw new Error("Unknown user operationIndex " + operationIndex);
+        };
     }
 }

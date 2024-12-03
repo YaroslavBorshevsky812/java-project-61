@@ -3,7 +3,13 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import static hexlet.code.Utils.MAX_PROGRESSION_RANGE;
+import static hexlet.code.Utils.MAX_RANDOM_RANGE;
+import static hexlet.code.Utils.MIN_PROGRESSION_RANGE;
 
 public class Progression {
 
@@ -19,7 +25,7 @@ public class Progression {
         int counter = 0;
 
         while (counter != Engine.ITERATION_RANGE) {
-            HashMap<Integer, String> exampleMap = Utils.createProgression();
+            HashMap<Integer, String> exampleMap = createProgression();
 
             if (!Engine.digitsLogic(exampleMap)) {
                 return;
@@ -30,4 +36,32 @@ public class Progression {
 
         System.out.println("Congratulations, " + Engine.getUserName() + "!");
     }
+
+    public static HashMap<Integer, String> createProgression() {
+        HashMap<Integer, String> resultMap = new HashMap<>();
+
+        int start = Utils.generateRandomNumber(MAX_RANDOM_RANGE);
+        int end = Utils.generateRandomNumber(MAX_RANDOM_RANGE);
+        int length = Utils.generateRandomNumber(MAX_PROGRESSION_RANGE, MIN_PROGRESSION_RANGE);
+
+        int step = (int) Math.round((double) (end - start) / (length - 1));
+
+        List<Object> progression = new ArrayList<>();
+        for (int i = 0; i < length; i++) {
+            progression.add(start + i * step);
+        }
+
+        int randomIndex = Utils.generateRandomNumber(progression.size() - 1);
+        int answer = (int) progression.get(randomIndex);
+        progression.set(randomIndex, "..");
+        String example = progression.toString()
+                                    .replace("[", "")
+                                    .replace("]", "")
+                                    .replace(",", "");
+
+        resultMap.put(answer, example);
+
+        return resultMap;
+    }
+
 }
