@@ -13,6 +13,12 @@ public class Calc {
     private static final String GAME_TITLE = "What is the result of the expression?";
     public static final int GAME_ID = 3; // Идентификатор игры.
 
+    public static final int SUMMATION_CASE = 1; // Сценарий операции суммы
+
+    public static final int MULTIPLICATION_CASE = 2; // Сценарий операции умножения
+
+    public static final int SUBTRACTION_CASE = 3; // Сценарий операции вычитания
+
     public static void start(int userChoice) {
         Engine.showChoice(userChoice);
         Engine.checkUserName();
@@ -76,9 +82,9 @@ public class Calc {
         int operationIndex = Utils.generateRandomNumber(OPERATIONS_NUMBER);
 
         return switch (operationIndex) {
-            case 1 -> "-";
-            case 2 -> "*";
-            case 3 -> "+";
+            case SUMMATION_CASE -> "-";
+            case MULTIPLICATION_CASE -> "*";
+            case SUBTRACTION_CASE -> "+";
             default -> throw new Error("Unknown user operationIndex " + operationIndex);
         };
     }
