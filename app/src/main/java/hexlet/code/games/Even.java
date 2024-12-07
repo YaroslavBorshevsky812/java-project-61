@@ -18,9 +18,6 @@ public class Even {
         System.out.println(GAME_TITLE);
 
         Engine.loop(Even::generateExample);
-
-        System.out.println("Congratulations, " + Engine.getUserName() + "!");
-
     }
 
     public static HashMap<String, String> generateExample() {

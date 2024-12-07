@@ -17,8 +17,6 @@ public class GCD {
         System.out.println(GAME_TITLE);
 
         Engine.loop(GCD::generateGCD);
-
-        System.out.println("Congratulations, " + Engine.getUserName() + "!");
     }
 
     public static HashMap<String, String> generateGCD() {

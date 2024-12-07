@@ -17,8 +17,6 @@ public class Prime {
         System.out.println(GAME_TITLE);
 
         Engine.loop(Prime::generateExample);
-
-        System.out.println("Congratulations, " + Engine.getUserName() + "!");
     }
 
     public static boolean isPrime(int number) {

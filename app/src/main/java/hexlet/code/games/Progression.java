@@ -23,8 +23,6 @@ public class Progression {
         System.out.println(GAME_TITLE);
 
         Engine.loop(Progression::createProgression);
-
-        System.out.println("Congratulations, " + Engine.getUserName() + "!");
     }
 
     public static HashMap<String, String> createProgression() {

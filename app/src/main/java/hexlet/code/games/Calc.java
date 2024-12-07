@@ -26,8 +26,6 @@ public class Calc {
         System.out.println(GAME_TITLE);
 
         Engine.loop(Calc::generateExample);
-
-        System.out.println("Congratulations, " + Engine.getUserName() + "!");
     }
 
     public static HashMap<String, String> generateExample() {
