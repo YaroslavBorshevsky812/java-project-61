@@ -72,8 +72,6 @@ public class Engine {
             return true;
         }
 
-        System.out.println("Congratulations, " + Engine.getUserName() + "!");
-
         return false;
     }
 
@@ -91,6 +89,8 @@ public class Engine {
 
             counter++;
         }
+
+        System.out.println("Congratulations, " + Engine.getUserName() + "!");
     }
 
     public interface AnswerExampleInterface {
