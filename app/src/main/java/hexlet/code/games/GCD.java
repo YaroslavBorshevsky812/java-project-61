@@ -10,10 +10,7 @@ public class GCD {
     private static final String GAME_TITLE = "Find the greatest common divisor of given numbers.";
     public static final int GAME_ID = 4; // Идентификатор игры.
 
-    public static void start(int userChoice) {
-        Engine.showChoice(userChoice);
-        Engine.checkUserName();
-
+    public static void start() {
         System.out.println(GAME_TITLE);
 
         Engine.loop(GCD::generateGCD);

@@ -10,10 +10,7 @@ public class Prime {
     private static final String GAME_TITLE = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     public static final int GAME_ID = 6; // Идентификатор игры.
 
-    public static void start(int userChoice) {
-        Engine.showChoice(userChoice);
-        Engine.checkUserName();
-
+    public static void start() {
         System.out.println(GAME_TITLE);
 
         Engine.loop(Prime::generateExample);

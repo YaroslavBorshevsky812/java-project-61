@@ -19,10 +19,7 @@ public class Calc {
 
     public static final int SUBTRACTION_CASE = 3; // Сценарий операции вычитания
 
-    public static void start(int userChoice) {
-        Engine.showChoice(userChoice);
-        Engine.checkUserName();
-
+    public static void start() {
         System.out.println(GAME_TITLE);
 
         Engine.loop(Calc::generateExample);

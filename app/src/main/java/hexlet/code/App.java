@@ -18,13 +18,16 @@ public class App {
 
         int userChoice = scanner.nextInt();
 
+        Engine.showChoice(userChoice);
+        Engine.checkUserName();
+
         switch (userChoice) {
             case Hello.GAME_ID -> Hello.start();
-            case Even.GAME_ID -> Even.start(userChoice);
-            case Calc.GAME_ID -> Calc.start(userChoice);
-            case GCD.GAME_ID -> GCD.start(userChoice);
-            case Progression.GAME_ID -> Progression.start(userChoice);
-            case Prime.GAME_ID -> Prime.start(userChoice);
+            case Even.GAME_ID -> Even.start();
+            case Calc.GAME_ID -> Calc.start();
+            case GCD.GAME_ID -> GCD.start();
+            case Progression.GAME_ID -> Progression.start();
+            case Prime.GAME_ID -> Prime.start();
             default -> {
                 throw new RuntimeException("Unknown user choice " + userChoice);
             }
