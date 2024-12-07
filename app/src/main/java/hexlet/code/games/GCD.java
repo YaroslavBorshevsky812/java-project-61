@@ -16,30 +16,20 @@ public class GCD {
 
         System.out.println(GAME_TITLE);
 
-        int counter = 0;
-
-        while (counter != Engine.ITERATION_RANGE) {
-            HashMap<Integer, String> exampleMap = generateGCD();
-
-            if (!Engine.digitsLogic(exampleMap)) {
-                return;
-            }
-
-            counter++;
-        }
+        Engine.loop(GCD::generateGCD);
 
         System.out.println("Congratulations, " + Engine.getUserName() + "!");
     }
 
-    public static HashMap<Integer, String> generateGCD() {
-        HashMap<Integer, String> resultMap = new HashMap<>();
+    public static HashMap<String, String> generateGCD() {
+        HashMap<String, String> resultMap = new HashMap<>();
         int[] numbers = Utils.generateRandomDifferentNumbers();
         int gcd = findGreatestCommonDivisor(numbers[0], numbers[1]);
         String example = "";
 
         example = numbers[0] + " " + numbers[1];
 
-        resultMap.put(gcd, example);
+        resultMap.put(String.valueOf(gcd), example);
 
         return resultMap;
     }

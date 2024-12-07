@@ -25,29 +25,19 @@ public class Calc {
 
         System.out.println(GAME_TITLE);
 
-        int counter = 0;
-
-        while (counter != Engine.ITERATION_RANGE) {
-            HashMap<Integer, String> exampleMap = generateExample();
-
-            if (!Engine.digitsLogic(exampleMap)) {
-                return;
-            }
-
-            counter++;
-        }
+        Engine.loop(Calc::generateExample);
 
         System.out.println("Congratulations, " + Engine.getUserName() + "!");
     }
 
-    public static HashMap<Integer, String> generateExample() {
+    public static HashMap<String, String> generateExample() {
         int num1 = 0;
         int num2 = 0;
         int result = 0;
         String example;
         String operation = getOperation();
 
-        HashMap<Integer, String> resultMap = new HashMap<>();
+        HashMap<String, String> resultMap = new HashMap<>();
 
         if (operation.equals("-")) {
             num1 = Utils.generateRandomNumber(MAX_RANDOM_RANGE);
@@ -68,12 +58,12 @@ public class Calc {
                 result = num1 * num2;
                 break;
             default:
-                throw new Error("Unknown operation " + operation);
+                throw new RuntimeException("Unknown operation " + operation);
         }
 
         example = (num1) + " " + operation + " " + (num2);
 
-        resultMap.put(result, example);
+        resultMap.put(String.valueOf(result), example);
 
         return resultMap;
     }
@@ -85,7 +75,7 @@ public class Calc {
             case SUMMATION_CASE -> "-";
             case MULTIPLICATION_CASE -> "*";
             case SUBTRACTION_CASE -> "+";
-            default -> throw new Error("Unknown user operationIndex " + operationIndex);
+            default -> throw new RuntimeException("Unknown user operationIndex " + operationIndex);
         };
     }
 }

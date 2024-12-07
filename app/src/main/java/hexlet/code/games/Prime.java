@@ -3,6 +3,8 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
+import java.util.HashMap;
+
 public class Prime {
 
     private static final String GAME_TITLE = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
@@ -14,19 +16,8 @@ public class Prime {
 
         System.out.println(GAME_TITLE);
 
-        int counter = 0;
+        Engine.loop(Prime::generateExample);
 
-        while (counter != Engine.ITERATION_RANGE) {
-
-            int randomNumber = Utils.generateRandomNumber(Utils.MAX_RANDOM_RANGE);
-            boolean isNatural = isPrime(randomNumber);
-
-            if (!Engine.yesNoLogic(randomNumber, isNatural)) {
-                return;
-            }
-
-            counter++;
-        }
         System.out.println("Congratulations, " + Engine.getUserName() + "!");
     }
 
@@ -42,5 +33,16 @@ public class Prime {
         }
 
         return true;
+    }
+
+    public static HashMap<String, String> generateExample() {
+        HashMap<String, String> resultMap = new HashMap<>();
+
+        int number = Utils.generateRandomNumber(Utils.MAX_RANDOM_RANGE);
+        boolean isPrime = isPrime(number);
+
+        resultMap.put(isPrime ? "yes" : "no", String.valueOf(number));
+
+        return resultMap;
     }
 }

@@ -26,7 +26,7 @@ public class App {
             case Progression.GAME_ID -> Progression.start(userChoice);
             case Prime.GAME_ID -> Prime.start(userChoice);
             default -> {
-                throw new Error("Unknown user choice " + userChoice);
+                throw new RuntimeException("Unknown user choice " + userChoice);
             }
         }
     }

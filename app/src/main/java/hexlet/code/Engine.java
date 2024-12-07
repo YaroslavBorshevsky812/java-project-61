@@ -53,52 +53,45 @@ public class Engine {
         System.out.println();
     }
 
-    public static boolean digitsLogic(HashMap<Integer, String> taskMap) {
-        for (Integer key : taskMap.keySet()) {
-
-            System.out.println("Question: " + taskMap.get(key));
-            Scanner scanner = new Scanner(System.in);
-            int userAnswer = scanner.nextInt();
-            System.out.println("Your answer: " + userAnswer);
-
-            boolean isCorrect = userAnswer == key;
-
-            if (isCorrect) {
-                System.out.println("Correct!");
-            } else {
-                System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was " + key + ".");
-                System.out.println("Let's try again, " + Engine.userName + "!");
-
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public static boolean yesNoLogic(Integer question, boolean predicate) {
+    public static boolean logic(String question, String rightAnswer) {
         System.out.println("Question: " + question);
 
         Scanner scanner = new Scanner(System.in);
-
         String userAnswer = scanner.nextLine();
-
         System.out.println("Your answer: " + userAnswer);
 
-        String correctAnswer = predicate ? "'yes'" : "'no'";
-
-        boolean isCorrect = (userAnswer.equals("yes") && predicate) || (userAnswer.equals("no") && !predicate);
+        boolean isCorrect = userAnswer.equals(rightAnswer);
 
         if (isCorrect) {
             System.out.println("Correct!");
         } else {
             System.out.println(
-                "'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was " + correctAnswer + ".");
+                "'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was " + rightAnswer + ".");
             System.out.println("Let's try again, " + Engine.userName + "!");
 
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
 
+    public static void loop(AnswerExampleInterface mapMethod) {
+        int counter = 0;
+
+        while (counter != Engine.ITERATION_RANGE) {
+            HashMap<String, String> answerExampleMap = mapMethod.getAnswerExampleMap();
+            String answer = answerExampleMap.keySet().iterator().next();
+            String example = answerExampleMap.get(answer);
+
+            if (Engine.logic(example, answer)) {
+                return;
+            }
+
+            counter++;
+        }
+    }
+
+    public interface AnswerExampleInterface {
+        HashMap<String, String> getAnswerExampleMap();
+    }
 }

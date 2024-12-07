@@ -22,23 +22,13 @@ public class Progression {
 
         System.out.println(GAME_TITLE);
 
-        int counter = 0;
-
-        while (counter != Engine.ITERATION_RANGE) {
-            HashMap<Integer, String> exampleMap = createProgression();
-
-            if (!Engine.digitsLogic(exampleMap)) {
-                return;
-            }
-
-            counter++;
-        }
+        Engine.loop(Progression::createProgression);
 
         System.out.println("Congratulations, " + Engine.getUserName() + "!");
     }
 
-    public static HashMap<Integer, String> createProgression() {
-        HashMap<Integer, String> resultMap = new HashMap<>();
+    public static HashMap<String, String> createProgression() {
+        HashMap<String, String> resultMap = new HashMap<>();
 
         int start = Utils.generateRandomNumber(MAX_RANDOM_RANGE);
         int end = Utils.generateRandomNumber(MAX_RANDOM_RANGE);
@@ -59,7 +49,7 @@ public class Progression {
                                     .replace("]", "")
                                     .replace(",", "");
 
-        resultMap.put(answer, example);
+        resultMap.put(String.valueOf(answer), example);
 
         return resultMap;
     }

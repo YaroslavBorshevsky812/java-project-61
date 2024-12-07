@@ -3,6 +3,8 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
+import java.util.HashMap;
+
 public class Even {
 
     private static final String GAME_TITLE = "Answer 'yes' if the number is even, otherwise answer 'no'.";
@@ -15,22 +17,21 @@ public class Even {
 
         System.out.println(GAME_TITLE);
 
-        int counter = 0;
-
-        while (counter != Engine.ITERATION_RANGE) {
-            int randomNumber = Utils.generateRandomNumber(Utils.MAX_RANDOM_RANGE);
-            boolean isEven = randomNumber % 2 == 0;
-
-            if (!Engine.yesNoLogic(randomNumber, isEven)) {
-                return;
-            }
-
-            counter++;
-
-        }
+        Engine.loop(Even::generateExample);
 
         System.out.println("Congratulations, " + Engine.getUserName() + "!");
 
+    }
+
+    public static HashMap<String, String> generateExample() {
+        HashMap<String, String> resultMap = new HashMap<>();
+
+        int number = Utils.generateRandomNumber(Utils.MAX_RANDOM_RANGE);
+        boolean isEven = number % 2 == 0;
+
+        resultMap.put(isEven ? "yes" : "no", String.valueOf(number));
+
+        return resultMap;
     }
 
 }
