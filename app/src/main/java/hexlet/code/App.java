@@ -18,8 +18,10 @@ public class App {
 
         int userChoice = scanner.nextInt();
 
-        Engine.showChoice(userChoice);
-        Engine.checkUserName();
+        if (userChoice != Hello.GAME_ID) {
+            Engine.showChoice(userChoice);
+            Engine.checkUserName();
+        }
 
         switch (userChoice) {
             case Hello.GAME_ID -> Hello.start();
